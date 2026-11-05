@@ -76,7 +76,10 @@
   .btn:hover{background:#c25d43}
   .btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--terra2)}
   .btn:disabled{opacity:.6;cursor:wait}
-  .back{font:inherit;background:none;border:0;color:var(--soft);text-decoration:underline;cursor:pointer;padding:10px 4px}
+  .back{flex:1;font:700 18px var(--sans);color:#523624;background:#eedbc2;border:0;border-radius:14px;padding:14px 24px;cursor:pointer;text-align:center;text-decoration:none;box-shadow:0 4px 0 #ccaf8f;transition:background .15s,transform .05s,box-shadow .05s}
+  .back:hover{background:#e3ccaf}
+  .back:active{transform:translateY(3px);box-shadow:0 1px 0 #ccaf8f}
+  .back:disabled{opacity:.6;cursor:not-allowed}
   button:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
   .snd{position:fixed;right:12px;bottom:12px;z-index:20;font:inherit;font-size:13px;background:rgba(255,250,240,.94);border:1.5px solid #dcc29a;color:var(--soft);border-radius:999px;padding:5px 14px;cursor:pointer;box-shadow:0 2px 8px rgba(120,72,30,.18)}
   .pc{position:relative;background:var(--card);border:1px solid #e3cfae;border-radius:4px;padding:26px 18px 16px;margin:16px 0 6px;transform:rotate(-.8deg);box-shadow:0 10px 24px rgba(120,72,30,.22);
@@ -214,6 +217,20 @@
   .mflow .fl{animation:mfloat 3.2s ease-in-out infinite}
   @keyframes mfloat{0%,100%{transform:translateY(0);opacity:.85}50%{transform:translateY(-7px);opacity:1}}
   @media (prefers-reduced-motion:reduce){.mflow .fl{animation:none}}
+
+  /* 1시 방향으로 날아가는 하트 편지 모션 */
+  .heart-fly-overlay{position:fixed;inset:0;z-index:99;display:grid;place-items:center;pointer-events:none;background:rgba(74,47,31,.28);backdrop-filter:blur(3px);animation:hfBgIn .3s ease-out forwards}
+  .heart-fly-overlay[hidden]{display:none}
+  @keyframes hfBgIn{from{opacity:0}to{opacity:1}}
+  .heart-letter-box{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(250px,72vw);filter:drop-shadow(0 14px 28px rgba(120,72,30,.38));animation:flyHeart 1.35s cubic-bezier(.22,.8,.36,1) forwards}
+  @keyframes flyHeart{
+    0%{transform:translate(-50%,-50%) scale(.2) rotate(-10deg);opacity:0}
+    22%{transform:translate(-50%,-50%) scale(1.06) rotate(3deg);opacity:1}
+    32%{transform:translate(-50%,-50%) scale(1) rotate(0deg);opacity:1}
+    55%{transform:translate(calc(-50% + 8vw),calc(-50% - 18vh)) scale(.92) rotate(8deg);opacity:.96}
+    100%{transform:translate(calc(-50% + 65vw),calc(-50% - 125vh)) scale(.35) rotate(26deg);opacity:0}
+  }
+  @media (prefers-reduced-motion:reduce){.heart-letter-box{animation:none}}
 </style>
 </head>
 <body>
@@ -297,8 +314,8 @@
       <div class="note">일상에서 실천할 수 있는 나만의 구체적인 방법을 작성해주세요.<br>구체적이고 진정성이 느껴지는 사연은 우수작 선정 시 가산점이 부여됩니다.</div>
       <p class="guide">어떻게 써야 할지 고민된다면 아래 단어를 눌러 이야기를 시작해보세요.<br>입력칸에 들어가며, 이를 활용하여 문장을 구성하면 좋아요.</p>
       <div class="starters" data-for="pledge" aria-label="말머리 단어"><button type="button">앞으로 나는 </button><button type="button">OO을/를 만나면 </button><button type="button">작은 것부터 </button></div>
-      <textarea id="pledge" maxlength="800" aria-label="실천 방법이나 다짐" placeholder="예) 이웃을 만나면 내가 먼저 웃으며 인사할게요."></textarea>
-      <div class="count">최소 10자 · <span data-count="pledge">0</span> / 800</div>
+      <textarea id="pledge" maxlength="1200" aria-label="실천 방법이나 다짐" placeholder="예) 이웃을 만나면 내가 먼저 웃으며 인사할게요."></textarea>
+      <div class="count">최소 10자 · <span data-count="pledge">0</span> / 1200</div>
       <div class="msg" role="alert"></div>
       <div class="nav"><button class="back" data-back>이전</button><button class="btn" data-next>다음</button></div>
     </section>
@@ -322,7 +339,7 @@
           <label><input type="radio" name="school" value="광운인공지능고등학교"><span><b>광운인공지능고등학교</b></span></label>
         </div>
         <label class="fld">이름을 적어주세요.<small>(익명 처리되니 안심하세요!)</small><input type="text" id="name" maxlength="20" autocomplete="off" aria-label="이름" placeholder="이름(성+이름)을 적어주세요"></label>
-        <label class="fld">연락받을 수 있는 연락처를 적어주세요.<small>(연락가능한 번호를 남겨주세요)</small><input type="text" id="contact" maxlength="40" inputmode="tel" autocomplete="off" aria-label="연락처" placeholder="전화번호를 입력해 주세요."></label>
+        <label class="fld">연락받을 수 있는 연락처를 적어주세요.<small>(예시: 010-XXXX-XXXX)</small><input type="text" id="contact" maxlength="13" inputmode="tel" autocomplete="off" aria-label="연락처" placeholder="(예시) 010-XXXX-XXXX"></label>
       </div>
       <div class="msg" role="alert"></div>
       <div class="nav"><button class="back" data-back>이전</button><button class="btn" data-next>다음</button></div>
@@ -353,7 +370,7 @@
       <svg class="mhero" viewBox="0 0 200 130" aria-hidden="true"><circle cx="100" cy="52" r="46" fill="#ffe7b0" opacity=".55"/><circle cx="100" cy="52" r="30" fill="#ffd98a" opacity=".6"/><rect x="48" y="62" width="104" height="58" rx="3" fill="#e8c99a" stroke="#c9a574"/><path d="M48 62l52 34 52-34" fill="#f0d6ab" stroke="#c9a574"/><path d="M100 50c-14-10-20-16-20-24a9 9 0 0 1 20-3 9 9 0 0 1 20 3c0 8-6 14-20 24z" fill="#c8553d" opacity=".85"/></svg>
       <h2 tabindex="-1">상대방에게 마음으로 전해 보아요<small>(직접 전달하지 않아도, 그 따뜻한 마음은 어떻게든 닿을 수 있답니다.)</small></h2>
       <div class="mycap">내가 쓴 사연</div>
-      <div class="pc">
+      <div class="pc" id="mvPc">
         <div class="pc-in">
           <div class="pc-to" id="mvTo"></div>
           <div class="pc-body" id="mvBody"></div>
@@ -411,6 +428,31 @@
       <p>여러분의 안전하고 행복한 학교생활을 응원합니다!</p>
     </section>
   </main>
+</div>
+
+<div id="heartFlyOverlay" class="heart-fly-overlay" hidden aria-hidden="true">
+  <div class="heart-letter-box" id="heartLetterBox">
+    <svg viewBox="0 0 220 160" width="100%" height="100%" style="display:block;overflow:visible">
+      <defs>
+        <filter id="hShadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#78481e" flood-opacity="0.25"/>
+        </filter>
+      </defs>
+      <!-- 봉투 본체 -->
+      <rect x="10" y="25" width="200" height="125" rx="10" fill="#fffdf7" stroke="#e6d2b3" stroke-width="2" filter="url(#hShadow)"/>
+      <!-- 봉투 안감 접힘선 -->
+      <path d="M10 25 L110 98 L210 25" fill="#fdf5e6" stroke="#dcc29a" stroke-width="2"/>
+      <path d="M10 150 L85 86" stroke="#eed8be" stroke-width="1.8"/>
+      <path d="M210 150 L135 86" stroke="#eed8be" stroke-width="1.8"/>
+      <!-- 봉투 덮개 -->
+      <path d="M10 25 L110 95 L210 25 Z" fill="#faebd0" stroke="#dcc29a" stroke-width="2"/>
+      <!-- 중앙의 따뜻한 붉은 하트 -->
+      <g transform="translate(110 95) scale(1.35)">
+        <path d="M0 14 C-16 2 -20 -5 -20 -12 A7.5 7.5 0 0 1 -5 -19.5 C-1.5 -19.5 0 -17 0 -15 C0 -17 1.5 -19.5 5 -19.5 A7.5 7.5 0 0 1 20 -12 C20 -5 16 2 0 14 Z" fill="#c8553d" stroke="#a2442d" stroke-width="1.5"/>
+        <path d="M-11 -15 A3.5 3.5 0 0 1 -6 -17.5" fill="none" stroke="#ffccd0" stroke-width="1.6" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
 </div>
 
 <button type="button" class="snd" id="snd" aria-pressed="false" hidden>음악 끄기</button>
@@ -491,7 +533,13 @@ function go(n){
   const pct = (n === 7 ? 1 : Math.min(n / LAST, 1)) * 100;
   $("#fill").style.width = pct + "%";
   $("#mail").style.left = pct + "%";
-  if (n === 7) { fillCard("mv"); $("#heartLead").hidden = true; $("#mindDone").textContent = "마음으로 전하기"; }
+  if (n === 7) {
+    fillCard("mv");
+    const c = $("#mvPc"); if(c){ c.style.transform = ""; c.style.opacity = ""; }
+    const o = $("#heartFlyOverlay"); if(o) o.hidden = true;
+    $("#heartLead").hidden = true;
+    const mb = $("#mindDone"); mb.disabled = false; mb.textContent = "마음으로 전하기";
+  }
   if (n === LAST) fillCard("pv");
   steps[n].querySelector("h1,h2").focus({preventScroll:true});
   window.scrollTo({top:0, behavior:"smooth"});
@@ -509,7 +557,12 @@ function check(n){
             if(radio("privacyOk")==="네"){
               if(!radio("school")) return "학교를 하나 골라 주세요";
               if(!text("name")) return "이름을 적어 주세요. 익명 처리되니 걱정 마세요!";
-              if(!text("contact")) return "연락처를 적어 주세요";
+              const rawContact = text("contact");
+              if(!rawContact) return "연락처를 적어 주세요";
+              const digits = rawContact.replace(/[^0-9]/g, "");
+              if(digits.length !== 11 || !/^01[0-9]/.test(digits)){
+                return "전화번호 자릿수를 올바르게 입력해 주세요. (예시: 010-XXXX-XXXX)";
+              }
             } break;
     case 6: if(!["dName","dOrg","dPlace","dTel","dMail","dEtc"].some(id=>text(id))) return "상대방을 찾을 수 있는 정보를 한 가지 이상 적어 주세요 (모르시면 이전 화면에서 '아니오'를 골라 주세요)"; break;
   }
@@ -568,6 +621,15 @@ document.addEventListener("change", e => {
 });
 $("#name").addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); $("#contact").focus(); } });
 $("#contact").addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); next(); } });
+$("#contact").addEventListener("input", e => {
+  let v = e.target.value.replace(/[^0-9]/g, "").slice(0, 11);
+  if (v.length > 7) {
+    v = v.slice(0, 3) + "-" + v.slice(3, 7) + "-" + v.slice(7);
+  } else if (v.length > 3) {
+    v = v.slice(0, 3) + "-" + v.slice(3);
+  }
+  e.target.value = v;
+});
 
 function fillCard(p){
   const t = radio("target") === "기타" ? text("targetEtc") : radio("target");
@@ -580,7 +642,7 @@ function fillCard(p){
   $("#"+p+"Feeling").textContent = f === "기타" ? text("feelingEtc") : f;
 }
 
-async function sendAll(btn, errEl, label, card){
+async function sendAll(btn, errEl, label, card, isHeart = false){
   if (text("website")) return;                       // 스팸 방지(허니팟)
   const yes = radio("privacyOk") === "네";
   const dv = id => radio("deliverOk") === "네" ? text(id) : "";
@@ -590,37 +652,54 @@ async function sendAll(btn, errEl, label, card){
     untold: "", pledge: text("pledge"),
     useOk: radio("privacyOk"), deliverOk: radio("deliverOk"), deliverName: dv("dName"), deliverOrg: dv("dOrg"), deliverPlace: dv("dPlace"), deliverTel: dv("dTel"), deliverMail: dv("dMail"), deliverEtc: dv("dEtc"), privacyOk: radio("privacyOk"), contact: yes ? text("contact") : ""
   };
-  btn.disabled = true; btn.textContent = "보내는 중…"; errEl.textContent = "";
+  btn.disabled = true; btn.textContent = isHeart ? "마음 전하는 중…" : "보내는 중…"; errEl.textContent = "";
   try {
     if (SCRIPT_URL) {
       await fetch(SCRIPT_URL, {method:"POST", mode:"no-cors",
         headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify(data)});
     } else { console.log("테스트 모드:", data); }
-    finish(card);
+    finish(card, isHeart);
   } catch (err) {
+    const o = $("#heartFlyOverlay"); if (o) o.hidden = true;
+    const mv = $("#mvPc"); if (mv) { mv.style.transform = ""; mv.style.opacity = ""; }
     errEl.textContent = "앗, 전송에 실패했어요. 잠시 뒤 다시 눌러 주세요.";
     btn.disabled = false; btn.textContent = label;
   }
 }
 $("#sendBtn").addEventListener("click", () => sendAll($("#sendBtn"), $("#sendErr"), "엽서 보내기", $("#pc")));
 $("#mindDone").addEventListener("click", () => {
-  const b = $("#mindDone"), L = $("#heartLead");
-  if (L.hidden) {                         // 1) '마음으로 전하기' → 멘트·그림 보여주기
-    heartBurst(b); rewig(b, "wig-chip");
-    L.hidden = false;
-    b.textContent = "마무리하기";
-    setTimeout(() => L.scrollIntoView({behavior:"smooth", block:"nearest"}), 80);
-    return;
+  const b = $("#mindDone"), msgEl = steps[cur].querySelector(".msg");
+  if (b.disabled) return;
+
+  const overlay = $("#heartFlyOverlay");
+  const letterBox = $("#heartLetterBox");
+  const mvCard = $("#mvPc");
+
+  if (overlay) {
+    overlay.hidden = false;
+    heartBurst(b);
+    setTimeout(() => { if (letterBox) heartBurst(letterBox); }, 220);
   }
-  sendAll(b, steps[cur].querySelector(".msg"), "마무리하기", null);   // 2) 마무리(제출)
+  if (mvCard) {
+    mvCard.style.transition = "transform .85s cubic-bezier(.4,0,.2,1), opacity .85s ease-in";
+    mvCard.style.transform = "translate(25vw, -50vh) rotate(10deg) scale(.75)";
+    mvCard.style.opacity = "0";
+  }
+
+  sendAll(b, msgEl, "마음으로 전하기", null, true);
 });
 
-function finish(card){
+function finish(card, isHeart = false){
   const show = () => {
+    const o = $("#heartFlyOverlay"); if (o) o.hidden = true;
     steps.forEach(s => s.hidden = true);
     $("#track").hidden = true;
     const d = $("#done"); d.hidden = false; d.querySelector("h2").focus({preventScroll:true});
   };
+  if (isHeart) {
+    setTimeout(show, 1250);
+    return;
+  }
   if (!card || matchMedia("(prefers-reduced-motion: reduce)").matches) return show();
   card.classList.add("fly");
   setTimeout(show, 950);
