@@ -359,7 +359,7 @@
 
     <section class="step" data-s="6" hidden>
       <div class="qno">Q6-1</div>
-      <h2 tabindex="-1">상대방에게 전달할 수 있도록, 알고 계신 정보를 적어 주세요.<small>한 가지 이상 적어 주시면 돼요.</small></h2>
+      <h2 tabindex="-1">상대방에게 전달할 수 있도록, 알고 계신 정보를 적어 주세요.<small>상대방에게 고백엽서가 잘 전달될 수 있도록 3개 이상의 정보를 기입해 주세요.</small></h2>
       <div class="note">상대방의 개인정보는 캠페인 활동이 마무리되면 바로 삭제해요.<small>정보를 입력하시면 수집·이용에 동의한 것으로 봅니다.</small></div>
       <label class="fld">성함 또는 호칭<input type="text" id="dName" maxlength="40" autocomplete="off" placeholder="예) 김○○ 사장님, ○○아파트 경비 아저씨"></label><label class="fld">상호명·소속<input type="text" id="dOrg" maxlength="60" autocomplete="off" placeholder="예) 행복편의점, ○○아파트 관리사무소"></label><label class="fld">주소·위치<input type="text" id="dPlace" maxlength="100" autocomplete="off" placeholder="예) ○○동 ○○번지, 학교 앞 사거리 버스 정류장"></label><label class="fld">연락처<input type="text" id="dTel" maxlength="30" autocomplete="off" placeholder="예) 010-0000-0000"></label><label class="fld">이메일 주소<input type="text" id="dMail" maxlength="60" autocomplete="off" placeholder="예) name@example.com"></label><label class="fld">그 밖의 정보<input type="text" id="dEtc" maxlength="200" autocomplete="off" placeholder="예) 평일 오전에 자주 뵐 수 있어요."></label>
       <div class="msg" role="alert"></div>
@@ -507,9 +507,10 @@ function heartBurst(el){ const B=$("#burst"), r=el.getBoundingClientRect();
 const Music=(()=>{
   const a=$("#bgm"), btn=$("#snd"); let on=false, muted=false, unlocked=false, ft;
   const label=()=>{ const p=!a.paused; btn.textContent=p?"음악 끄기":"음악 켜기"; btn.setAttribute("aria-pressed",String(!p)); };
+  const TARGET_VOL = 0.15;
   function ramp(to,ms){ clearInterval(ft); const from=a.volume, n=20; let i=0;
     ft=setInterval(()=>{ i++; a.volume=Math.min(1,Math.max(0,from+(to-from)*i/n)); if(i>=n){ clearInterval(ft); if(to===0) a.pause(); } },ms/n); }
-  function start(){ a.volume=0; const p=a.play(); if(p&&p.then) p.then(()=>ramp(.28,1500)).catch(label); }
+  function start(){ a.volume=0; const p=a.play(); if(p&&p.then) p.then(()=>ramp(TARGET_VOL,1500)).catch(label); }
   a.addEventListener("play",label); a.addEventListener("pause",label); a.addEventListener("error",()=>{ btn.hidden=true; });
   return {
     unlock(){ if(unlocked) return; unlocked=true; a.muted=true; const p=a.play();
@@ -564,7 +565,7 @@ function check(n){
                 return "전화번호 자릿수를 올바르게 입력해 주세요. (예시: 010-XXXX-XXXX)";
               }
             } break;
-    case 6: if(!["dName","dOrg","dPlace","dTel","dMail","dEtc"].some(id=>text(id))) return "상대방을 찾을 수 있는 정보를 한 가지 이상 적어 주세요 (모르시면 이전 화면에서 '아니오'를 골라 주세요)"; break;
+    case 6: if(["dName","dOrg","dPlace","dTel","dMail","dEtc"].filter(id=>text(id)).length < 3) return "상대방에게 고백엽서가 잘 전달될 수 있도록 3개 이상의 정보를 기입해 주세요 (모르시면 이전 화면에서 '아니오'를 골라 주세요)"; break;
   }
   return "";
 }
