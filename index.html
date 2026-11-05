@@ -218,17 +218,18 @@
   @keyframes mfloat{0%,100%{transform:translateY(0);opacity:.85}50%{transform:translateY(-7px);opacity:1}}
   @media (prefers-reduced-motion:reduce){.mflow .fl{animation:none}}
 
-  /* 1시 방향으로 날아가는 하트 편지 모션 */
-  .heart-fly-overlay{position:fixed;inset:0;z-index:99;display:grid;place-items:center;pointer-events:none;background:rgba(74,47,31,.28);backdrop-filter:blur(3px);animation:hfBgIn .3s ease-out forwards}
+  /* 1시 방향으로 날아가는 하트 편지 모션 (천천히 사라지는 모션) */
+  .heart-fly-overlay{position:fixed;inset:0;z-index:99;display:grid;place-items:center;pointer-events:none;background:rgba(74,47,31,.28);backdrop-filter:blur(3px);animation:hfBgIn .35s ease-out forwards}
   .heart-fly-overlay[hidden]{display:none}
   @keyframes hfBgIn{from{opacity:0}to{opacity:1}}
-  .heart-letter-box{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(250px,72vw);filter:drop-shadow(0 14px 28px rgba(120,72,30,.38));animation:flyHeart 1.35s cubic-bezier(.22,.8,.36,1) forwards}
+  .heart-letter-box{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(250px,72vw);filter:drop-shadow(0 14px 28px rgba(120,72,30,.38));animation:flyHeart 2.4s cubic-bezier(.2,.7,.25,1) forwards}
   @keyframes flyHeart{
     0%{transform:translate(-50%,-50%) scale(.2) rotate(-10deg);opacity:0}
-    22%{transform:translate(-50%,-50%) scale(1.06) rotate(3deg);opacity:1}
-    32%{transform:translate(-50%,-50%) scale(1) rotate(0deg);opacity:1}
-    55%{transform:translate(calc(-50% + 8vw),calc(-50% - 18vh)) scale(.92) rotate(8deg);opacity:.96}
-    100%{transform:translate(calc(-50% + 65vw),calc(-50% - 125vh)) scale(.35) rotate(26deg);opacity:0}
+    18%{transform:translate(-50%,-50%) scale(1.06) rotate(3deg);opacity:1}
+    28%{transform:translate(-50%,-50%) scale(1) rotate(0deg);opacity:1}
+    48%{transform:translate(calc(-50% + 6vw),calc(-50% - 12vh)) scale(.95) rotate(6deg);opacity:.98}
+    72%{transform:translate(calc(-50% + 26vw),calc(-50% - 48vh)) scale(.8) rotate(16deg);opacity:.9}
+    100%{transform:translate(calc(-50% + 70vw),calc(-50% - 130vh)) scale(.3) rotate(28deg);opacity:0}
   }
   @media (prefers-reduced-motion:reduce){.heart-letter-box{animation:none}}
 </style>
@@ -423,9 +424,8 @@
     <!-- 완료 -->
     <section class="step" id="done" hidden>
       <div class="big" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3z"/><path d="M3 6l9 7 9-7"/></svg></div>
-      <h2 tabindex="-1">소중한 이야기를 들려주셔서 감사합니다</h2>
-      <p>받은 따뜻함을 주변에 전하는 일에서 우리 동네의 따뜻함이 시작돼요.</p>
-      <p>여러분의 안전하고 행복한 학교생활을 응원합니다!</p>
+      <h2 tabindex="-1">소중한 이야기를 들려주셔서 감사합니다.</h2>
+      <h2>여러분의 안전하고 행복한 학교생활을 응원합니다.</h2>
     </section>
   </main>
 </div>
@@ -541,7 +541,12 @@ function go(n){
     $("#heartLead").hidden = true;
     const mb = $("#mindDone"); mb.disabled = false; mb.textContent = "마음으로 전하기";
   }
-  if (n === LAST) fillCard("pv");
+  if (n === LAST) {
+    fillCard("pv");
+    const c = $("#pc"); if(c){ c.style.transform = ""; c.style.opacity = ""; }
+    const o = $("#heartFlyOverlay"); if(o) o.hidden = true;
+    const sb = $("#sendBtn"); sb.disabled = false; sb.textContent = "엽서 보내기";
+  }
   steps[n].querySelector("h1,h2").focus({preventScroll:true});
   window.scrollTo({top:0, behavior:"smooth"});
 }
@@ -643,6 +648,22 @@ function fillCard(p){
   $("#"+p+"Feeling").textContent = f === "기타" ? text("feelingEtc") : f;
 }
 
+function triggerFlyMotion(cardEl, btnEl){
+  const overlay = $("#heartFlyOverlay");
+  const letterBox = $("#heartLetterBox");
+
+  if (overlay) {
+    overlay.hidden = false;
+    heartBurst(btnEl);
+    setTimeout(() => { if (letterBox) heartBurst(letterBox); }, 300);
+  }
+  if (cardEl) {
+    cardEl.style.transition = "transform 1.3s cubic-bezier(.35,0,.2,1), opacity 1.3s ease-in";
+    cardEl.style.transform = "translate(25vw, -45vh) rotate(10deg) scale(.75)";
+    cardEl.style.opacity = "0";
+  }
+}
+
 async function sendAll(btn, errEl, label, card, isHeart = false){
   if (text("website")) return;                       // 스팸 방지(허니팟)
   const yes = radio("privacyOk") === "네";
@@ -653,7 +674,7 @@ async function sendAll(btn, errEl, label, card, isHeart = false){
     untold: "", pledge: text("pledge"),
     useOk: radio("privacyOk"), deliverOk: radio("deliverOk"), deliverName: dv("dName"), deliverOrg: dv("dOrg"), deliverPlace: dv("dPlace"), deliverTel: dv("dTel"), deliverMail: dv("dMail"), deliverEtc: dv("dEtc"), privacyOk: radio("privacyOk"), contact: yes ? text("contact") : ""
   };
-  btn.disabled = true; btn.textContent = isHeart ? "마음 전하는 중…" : "보내는 중…"; errEl.textContent = "";
+  btn.disabled = true; btn.textContent = isHeart ? (label === "마음으로 전하기" ? "마음 전하는 중…" : "엽서 보내는 중…") : "보내는 중…"; errEl.textContent = "";
   try {
     if (SCRIPT_URL) {
       await fetch(SCRIPT_URL, {method:"POST", mode:"no-cors",
@@ -663,31 +684,22 @@ async function sendAll(btn, errEl, label, card, isHeart = false){
   } catch (err) {
     const o = $("#heartFlyOverlay"); if (o) o.hidden = true;
     const mv = $("#mvPc"); if (mv) { mv.style.transform = ""; mv.style.opacity = ""; }
+    const pc = $("#pc"); if (pc) { pc.style.transform = ""; pc.style.opacity = ""; }
     errEl.textContent = "앗, 전송에 실패했어요. 잠시 뒤 다시 눌러 주세요.";
     btn.disabled = false; btn.textContent = label;
   }
 }
-$("#sendBtn").addEventListener("click", () => sendAll($("#sendBtn"), $("#sendErr"), "엽서 보내기", $("#pc")));
-$("#mindDone").addEventListener("click", () => {
-  const b = $("#mindDone"), msgEl = steps[cur].querySelector(".msg");
+$("#sendBtn").addEventListener("click", () => {
+  const b = $("#sendBtn"), msgEl = $("#sendErr"), card = $("#pc");
   if (b.disabled) return;
-
-  const overlay = $("#heartFlyOverlay");
-  const letterBox = $("#heartLetterBox");
-  const mvCard = $("#mvPc");
-
-  if (overlay) {
-    overlay.hidden = false;
-    heartBurst(b);
-    setTimeout(() => { if (letterBox) heartBurst(letterBox); }, 220);
-  }
-  if (mvCard) {
-    mvCard.style.transition = "transform .85s cubic-bezier(.4,0,.2,1), opacity .85s ease-in";
-    mvCard.style.transform = "translate(25vw, -50vh) rotate(10deg) scale(.75)";
-    mvCard.style.opacity = "0";
-  }
-
-  sendAll(b, msgEl, "마음으로 전하기", null, true);
+  triggerFlyMotion(card, b);
+  sendAll(b, msgEl, "엽서 보내기", card, true);
+});
+$("#mindDone").addEventListener("click", () => {
+  const b = $("#mindDone"), msgEl = steps[cur].querySelector(".msg"), card = $("#mvPc");
+  if (b.disabled) return;
+  triggerFlyMotion(card, b);
+  sendAll(b, msgEl, "마음으로 전하기", card, true);
 });
 
 function finish(card, isHeart = false){
@@ -698,7 +710,7 @@ function finish(card, isHeart = false){
     const d = $("#done"); d.hidden = false; d.querySelector("h2").focus({preventScroll:true});
   };
   if (isHeart) {
-    setTimeout(show, 1250);
+    setTimeout(show, 2350);
     return;
   }
   if (!card || matchMedia("(prefers-reduced-motion: reduce)").matches) return show();
