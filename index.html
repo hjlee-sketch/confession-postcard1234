@@ -284,24 +284,24 @@
       <div class="pair">
         <div class="qcard" id="q2card">
           <div class="qno">Q2</div>
-          <h2 tabindex="-1">그분과 함께하며 마음이 따뜻해졌던 순간을 떠올려 보세요. 어떤 일이 있었는지, 그분께 전하고 싶은 마음과 함께 자유롭게 적어주세요.<small>(장소, 시간 등 에피소드를 자유롭게 작성해주세요.)</small></h2>
-          <p class="guide">어떻게 써야 할지 고민된다면 아래 단어를 눌러 이야기를 시작해보세요.<br>입력칸에 들어가며, 이를 활용하여 문장을 구성하면 좋아요.</p>
-          <div class="starters" data-for="moment" aria-label="시작 문장 도움말"><button type="button">그날은 </button><button type="button">장소는 </button><button type="button">그때 그 분이 </button><button type="button">나는 그 순간 </button><button type="button">언제나 </button><button type="button">안전을 </button><button type="button">용기를 내서 </button><button type="button">쑥스러워서 </button><button type="button">덕분에 </button><button type="button">밝은 </button></div>
-          <textarea id="moment" maxlength="1200" aria-label="따뜻했던 사연과 전하고 싶은 이야기" placeholder="예) 비 오는 날, 아파트 앞에서 경비 아저씨가 우산을 씌워 주셨어요. 늘 인사해 주셔서 고마웠는데, 쑥스러워서 말을 못 했어요."></textarea>
-          <div class="count">최소 10자 · <span data-count="moment">0</span> / 1200</div>
+          <h2 tabindex="-1">그 분에게 전하고 싶은 마음을 한마디로 표현하면 무엇인가요?</h2>
+          <div class="opts inline" role="radiogroup" aria-label="마음 한마디">
+            <label><input type="radio" name="feeling" value="고마워요"><span class="em" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg></span><span><b>“고마워요”</b><small>감사의 마음</small></span></label>
+            <label><input type="radio" name="feeling" value="미안해요"><span class="em" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8 2 22"/><path d="M17.5 15H9"/></svg></span><span><b>“미안해요”</b><small>사과, 반성 등의 마음</small></span></label>
+            <label><input type="radio" name="feeling" value="응원해요"><span class="em" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg></span><span><b>“응원해요”</b><small>격려, 존중 등의 마음</small></span></label>
+            <label><input type="radio" name="feeling" value="소중해요"><span class="em" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg></span><span><b>“소중해요”</b><small>사랑, 애정 등의 마음</small></span></label>
+            <label><input type="radio" name="feeling" value="기타"><span class="em" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/><path d="M15 5l4 4"/></svg></span><span><b>기타</b><small>나만의 한마디가 있어요</small></span></label>
+          </div>
+          <div class="etc" id="feelingEtcWrap"><input type="text" id="feelingEtc" maxlength="30" aria-label="기타 마음 한마디" placeholder="내가 생각하는 마음을 써 보세요"></div>
         </div>
         <div class="qcard locked" id="q3card">
           <div class="qno">Q3</div>
-          <div class="lockmsg">위의 Q2를 먼저 작성하면 이어서 고를 수 있어요.</div>
-          <h2 tabindex="-1">그 분에게 전하고 싶은 마음을 한마디로 표현하면 무엇인가요?</h2>
-          <div class="opts inline" role="radiogroup" aria-label="마음 한마디">
-        <label><input type="radio" disabled name="feeling" value="고마워요"><span class="em" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg></span><span><b>“고마워요”</b><small>감사의 마음</small></span></label>
-        <label><input type="radio" disabled name="feeling" value="미안해요"><span class="em" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8 2 22"/><path d="M17.5 15H9"/></svg></span><span><b>“미안해요”</b><small>사과, 반성 등의 마음</small></span></label>
-        <label><input type="radio" disabled name="feeling" value="응원해요"><span class="em" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg></span><span><b>“응원해요”</b><small>격려, 존중 등의 마음</small></span></label>
-        <label><input type="radio" disabled name="feeling" value="소중해요"><span class="em" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg></span><span><b>“소중해요”</b><small>사랑, 애정 등의 마음</small></span></label>
-        <label><input type="radio" disabled name="feeling" value="기타"><span class="em" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/><path d="M15 5l4 4"/></svg></span><span><b>기타</b><small>나만의 한마디가 있어요</small></span></label>
-      </div>
-          <div class="etc" id="feelingEtcWrap"><input type="text" id="feelingEtc" maxlength="30" aria-label="기타 마음 한마디" placeholder="내가 생각하는 마음을 써 보세요"></div>
+          <div class="lockmsg">위의 Q2에서 마음 한마디를 먼저 골라 주세요.</div>
+          <h2 tabindex="-1">그분과 함께하며 마음이 따뜻해졌던 순간을 떠올려 보세요. 어떤 일이 있었는지, 그분께 전하고 싶은 마음과 함께 자유롭게 적어주세요.<small>(장소, 시간 등 에피소드를 자유롭게 작성해주세요.)</small></h2>
+          <p class="guide">어떻게 써야 할지 고민된다면 아래 단어를 눌러 이야기를 시작해보세요.<br>입력칸에 들어가며, 이를 활용하여 문장을 구성하면 좋아요.</p>
+          <div class="starters" data-for="moment" aria-label="시작 문장 도움말"><button type="button">그날은 </button><button type="button">장소는 </button><button type="button">그때 그 분이 </button><button type="button">나는 그 순간 </button><button type="button">언제나 </button><button type="button">안전을 </button><button type="button">용기를 내서 </button><button type="button">쑥스러워서 </button><button type="button">덕분에 </button><button type="button">밝은 </button></div>
+          <textarea id="moment" maxlength="1200" disabled aria-label="따뜻했던 사연과 전하고 싶은 이야기" placeholder="예) 비 오는 날, 아파트 앞에서 경비 아저씨가 우산을 씌워 주셨어요. 늘 인사해 주셔서 고마웠는데, 쑥스러워서 말을 못 했어요."></textarea>
+          <div class="count">최소 10자 · <span data-count="moment">0</span> / 1200</div>
         </div>
       </div>
       <div class="msg" role="alert"></div>
@@ -494,9 +494,9 @@ function burst(v){
 function rewig(el,c){ if(!el) return; el.classList.remove(c); void el.offsetWidth; el.classList.add(c); setTimeout(()=>el.classList.remove(c),900); }
 function wiggle(i){ if(!i || i.type!=="radio") return; const l=i.closest("label"); if(!l) return;
   if(l.closest(".opts")){ rewig(l,"wig-row"); rewig(l.querySelector(".ph,.em"),"wig-ico"); } else rewig(l,"wig-chip"); }
-function syncLock(){ const ok=text("moment").length>=10, c=$("#q3card"); c.classList.toggle("locked",!ok); c.querySelectorAll('input[name="feeling"]').forEach(i=>{ i.disabled=!ok; }); }
+function syncLock(){ const ok=!!radio("feeling")&&(radio("feeling")!=="기타"||text("feelingEtc").length>0), c=$("#q3card"); c.classList.toggle("locked",!ok); $("#moment").disabled=!ok; c.querySelectorAll(".starters button").forEach(b=>{ b.disabled=!ok; }); }
 document.addEventListener("click", e => { if(!e.target.closest("#q3card.locked")) return; e.preventDefault();
-  steps[cur].querySelector(".msg").textContent="먼저 위의 Q2에 사연을 적어 주세요 (10자 이상)"; rewig($("#q2card"),"wig-row"); $("#moment").focus(); }, true);
+  steps[cur].querySelector(".msg").textContent="먼저 위의 Q2에서 마음 한마디를 골라 주세요"; rewig($("#q2card"),"wig-row"); }, true);
 
 function heartBurst(el){ const B=$("#burst"), r=el.getBoundingClientRect();
   for(let i=0;i<16;i++){ const e=document.createElement("span"); e.className="bst"; const z=14+Math.random()*28; e.style.width=e.style.height=z+"px";
@@ -555,9 +555,9 @@ function check(n){
   switch(n){
     case 1: if(!radio("target")) return "받는 사람을 하나 골라 주세요";
             if(radio("target")==="기타" && !text("targetEtc")) return "누구에게 전할지 적어 주세요"; break;
-    case 2: if(text("moment").length < 10) return "조금만 더 적어 주세요 (10자 이상)";
-            if(!radio("feeling")) return "마음 한마디를 골라 주세요";
-            if(radio("feeling")==="기타" && !text("feelingEtc")) return "내가 생각하는 마음을 써 주세요"; break;
+    case 2: if(!radio("feeling")) return "마음 한마디를 골라 주세요";
+            if(radio("feeling")==="기타" && !text("feelingEtc")) return "내가 생각하는 마음을 써 주세요";
+            if(text("moment").length < 10) return "사연을 조금만 더 적어 주세요 (10자 이상)"; break;
     case 3: if(text("pledge").length < 10) return "나만의 다짐을 조금만 더 적어 주세요 (10자 이상)"; break;
     case 4: if(!radio("privacyOk")) return "하나를 골라 주세요";
             if(radio("privacyOk")==="네"){
@@ -603,7 +603,7 @@ document.addEventListener("click", e => {
 });
 
 document.addEventListener("input", e => {
-  if (e.target.id === "moment") syncLock();
+  if (e.target.id === "feelingEtc") syncLock();
   const c = document.querySelector(`[data-count="${e.target.id}"]`);
   if (c) c.textContent = e.target.value.length;
   const m = steps[cur]?.querySelector(".msg"); if (m) m.textContent = "";
@@ -619,9 +619,11 @@ document.addEventListener("change", e => {
     if (etc) $("#targetEtc").focus();
   }
   if (e.target.name === "feeling") {
+    syncLock();
     const etc = e.target.value === "기타";
     $("#feelingEtcWrap").style.display = etc ? "block" : "none";
     if (etc) $("#feelingEtc").focus();
+    else if (!$("#moment").disabled) $("#moment").focus();
   }
   const m = steps[cur]?.querySelector(".msg"); if (m) m.textContent = "";
 });
