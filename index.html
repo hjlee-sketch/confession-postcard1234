@@ -553,9 +553,13 @@
 </div>
 
 <button type="button" class="snd" id="snd" aria-pressed="false" hidden>음악 끄기</button>
+<script src="config.js"></script>
 <script>
 /* 구글 Apps Script 웹 앱 주소 */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxTqVBOFjK1Xvy8FZbWaAR-eQlu-RLgiEkpSY6CNwcB5Pb3pSE16QGq1eQhxPlxYs_k/exec";
+const SCRIPT_URL = (window.SCRIPT_URL || "").trim();   // 주소는 config.js 파일에서 설정합니다
+
+/* 이 접수 1건의 고유 번호 (전송이 재시도돼도 시트에는 한 번만 저장됩니다) */
+const SUBMISSION_ID = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : Date.now() + "-" + Math.random().toString(36).slice(2);
 
 const $ = s => document.querySelector(s);
 const steps = [...document.querySelectorAll(".step[data-s]")];
@@ -783,6 +787,20 @@ function triggerFlyMotion(cardEl, btnEl){
   }
 }
 
+/* 시트에 접수 저장: 저장 확인 응답을 읽고, 읽을 수 없는 환경이면 한 번 더 보냅니다(접수 ID로 중복 방지) */
+async function postData(data){
+  const opt = {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify(data)};
+  try {
+    const r = await fetch(SCRIPT_URL, opt);
+    const j = await r.json();
+    if (j && j.ok) return;
+    throw new Error((j && j.error) || "server");
+  } catch (e) {
+    if (e && e.name === "TypeError") { await fetch(SCRIPT_URL, {...opt, mode:"no-cors"}); return; }
+    throw e;
+  }
+}
+
 async function sendAll(btn, errEl, label, card, isHeart = false){
   if (text("website")) return;                       // 스팸 방지(허니팟)
   const yes = radio("privacyOk") === "네";
@@ -795,14 +813,14 @@ async function sendAll(btn, errEl, label, card, isHeart = false){
     school: yes ? radio("school") : "", name: yes ? text("name") : "",
     target: targetVal(), moment: text("moment"), feeling: feelingVal(),
     untold: "", pledge: text("pledge"),
-    useOk: radio("privacyOk"), deliverOk: radio("deliverOk"), deliverName: dv("dName"), deliverOrg: dv("dOrg"), deliverPlace: dv("dPlace"), deliverTel: dv("dTel"), deliverMail: dv("dMail"), deliverEtc: dv("dEtc"), privacyOk: radio("privacyOk"), contact: yes ? text("contact") : ""
+    useOk: radio("privacyOk"), deliverOk: radio("deliverOk"), deliverName: dv("dName"), deliverOrg: dv("dOrg"), deliverPlace: dv("dPlace"), deliverTel: dv("dTel"), deliverMail: dv("dMail"), deliverEtc: dv("dEtc"), privacyOk: radio("privacyOk"), contact: yes ? text("contact") : "",
+    submissionId: SUBMISSION_ID, route: label === "마음으로 전하기" ? "마음 전하기" : "엽서 전달"
   };
   btn.disabled = true; btn.textContent = isHeart ? (label === "마음으로 전하기" ? "마음 전하는 중…" : "엽서 보내는 중…") : "보내는 중…"; errEl.textContent = "";
   try {
-    if (SCRIPT_URL) {
-      await fetch(SCRIPT_URL, {method:"POST", mode:"no-cors",
-        headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify(data)});
-    } else { console.log("테스트 모드:", data); }
+    if (/^https:\/\/script\.google\.com\//.test(SCRIPT_URL)) {
+      await postData(data);
+    } else { throw new Error("접수 주소(config.js)가 설정되지 않았어요"); }   // 주소가 없으면 '성공'처럼 보이지 않도록 오류 처리
     finish(card, isHeart);
   } catch (err) {
     const o = $("#heartFlyOverlay"); if (o) o.hidden = true;
