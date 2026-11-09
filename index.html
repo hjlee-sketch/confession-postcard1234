@@ -164,18 +164,43 @@
   .note.multi small{font-size:14px;color:var(--brown);margin-top:3px}
   .one{text-wrap:wrap}
   .one small{display:inline;margin-left:8px;white-space:nowrap}
-  .period{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 12px;margin:0 0 18px;padding:11px 14px;background:#fff3da;border:1.5px dashed #cfa56e;border-radius:12px;text-align:center}
-  .period span{font:400 22px/1 var(--hand);color:var(--terra)}
-  .period b{font-family:var(--serif);font-size:17px;color:var(--brown)}
+  .period{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 12px;margin:0 0 18px;padding:12px 16px;background:#fff3da;border:1.5px dashed #cfa56e;border-radius:12px;text-align:center}
+  .period span{font-family:var(--sans);font-weight:700;font-size:16px;color:var(--terra)}
+  .period b{font-family:var(--sans);font-weight:700;font-size:16px;color:var(--brown)}
   .perk{margin:0 0 16px}
-  .perk h3{font:400 24px/1 var(--hand);color:var(--terra);margin:0 0 8px}
+  .perk h3{font-family:var(--sans);font-weight:700;font-size:18px;color:var(--brown);margin:0 0 10px}
   .perk-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .tk{background:#fff3da;border:1.5px dashed #cfa56e;border-radius:12px;padding:14px 12px;text-align:center}
   .tk svg{width:26px;height:26px;color:var(--terra);margin-bottom:2px}
   .tk small{display:block;font-size:13px;color:var(--soft)}
-  .tk b{display:block;font-family:var(--serif);font-size:17px;color:var(--brown);margin:2px 0}
+  .tk b{display:block;font-family:var(--sans);font-weight:700;font-size:16px;color:var(--brown);margin:3px 0}
   .tk span{display:block;font-size:13px;color:var(--soft);text-wrap:pretty}
   @media (max-width:560px){.perk-grid{grid-template-columns:1fr}}
+
+  /* 하단 중앙 주최/주관 로고 */
+  .brand-footer{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:28px;padding-top:20px;border-top:1px dashed #dcc29a}
+  .brand-item{display:flex;align-items:center;justify-content:center}
+  .brand-item img{height:34px;width:auto;max-width:180px;object-fit:contain;filter:drop-shadow(0 1px 2px rgba(120,72,30,.12))}
+  .brand-divider{width:1px;height:24px;background:#dcc29a}
+  @media (max-width:480px){
+    .brand-footer{gap:14px;margin-top:22px;padding-top:16px}
+    .brand-item img{height:28px;max-width:140px}
+  }
+
+  /* Q6-1 아는 정보만 선택해 기입하는 체크박스 리스트 */
+  .dinfo-guide{font-size:14px;color:var(--terra2);font-weight:700;margin:12px 0 8px}
+  .dinfo-list{display:flex;flex-direction:column;gap:10px;margin:10px 0}
+  .dinfo-item{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;transition:border-color .15s,background .15s,box-shadow .15s}
+  .dinfo-item:has(.dchk:checked){border-color:var(--terra);background:#fff7ea;box-shadow:0 3px 10px rgba(185,83,58,.1)}
+  .dinfo-chk{display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none}
+  .dinfo-chk input{position:absolute;opacity:0;pointer-events:none}
+  .chk-icon{flex:none;width:22px;height:22px;border:1.5px solid #d9b98f;border-radius:6px;background:#fff;display:grid;place-items:center;transition:background-color .15s,border-color .15s}
+  .dinfo-chk input:checked + .chk-icon{background:var(--terra);border-color:var(--terra);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");background-size:14px;background-repeat:no-repeat;background-position:center}
+  .dinfo-chk input:focus-visible + .chk-icon{outline:2px solid var(--sky);outline-offset:2px}
+  .dinfo-title{font-weight:700;font-size:15px;color:var(--brown)}
+  .dinfo-body{margin-top:10px;padding-top:10px;border-top:1px dashed #e6d2b3}
+  .dinfo-body[hidden]{display:none}
+  .dinfo-body input{background:#fff;border-color:#dcc29a}
   .fld{display:block;margin:12px 0 0;font-weight:700;font-size:14.5px;color:var(--brown)}
   .fld input{margin-top:6px;font-weight:400}
   .pinfo-h{margin:14px 0 6px;font-weight:700;font-size:13.5px;color:var(--terra2)}
@@ -251,7 +276,7 @@
     <section class="step" data-s="0">
       <svg class="hero" viewBox="0 0 260 175" aria-hidden="true"><g transform="rotate(-7 80 80)"><rect x="26" y="14" width="92" height="106" fill="#fffdf7" stroke="#e3cfae"/><rect x="34" y="22" width="76" height="78" fill="#f6c98d"/><circle cx="86" cy="48" r="13" fill="#fff0c8"/><path d="M34 100V80q20-18 40-6t36-8v34z" fill="#c8553d" opacity=".72"/><rect x="56" y="6" width="36" height="14" fill="#e0a33a" opacity=".65" transform="rotate(-4 74 13)"/></g><g transform="rotate(6 180 80)"><rect x="132" y="22" width="92" height="106" fill="#fffdf7" stroke="#e3cfae"/><rect x="140" y="30" width="76" height="78" fill="#f3d9ae"/><circle cx="162" cy="58" r="11" fill="#c8553d" opacity=".7"/><circle cx="192" cy="58" r="11" fill="#8a9a7b" opacity=".8"/><path d="M146 100q10-26 32-26t30 26z" fill="#b9533a" opacity=".6"/><rect x="154" y="14" width="36" height="14" fill="#8a9a7b" opacity=".6" transform="rotate(5 172 21)"/></g><rect x="62" y="98" width="140" height="68" rx="3" fill="#e8c99a" stroke="#c9a574"/><path d="M62 98l70 42 70-42" fill="#f0d6ab" stroke="#c9a574"/><circle cx="132" cy="138" r="9" fill="#b9533a"/><path d="M132 143c-5-3-7-5-7-8a3.2 3.2 0 0 1 7-.6 3.2 3.2 0 0 1 7 .6c0 3-2 5-7 8z" fill="#fff3da"/></svg>
       <h1 tabindex="-1">‘위대한 고백’ 캠페인</h1>
-      <p class="hint">학교 밖 사람들에게 평소 전하지 못했던 마음을 고백엽서에 담아 보세요.</p>
+      <p class="hint">학교를 넘어 우리 동네, 지역 사회에 있는 다양한 사람들에게<br>평소 전하지 못했던 마음을 고백엽서에 담아 보세요.</p>
       <div class="period" aria-label="참여 기간"><span>참여 기간</span><b>2026년 11월 16일 ~ 12월 11일</b></div>
       <ol class="flow" aria-label="참여 방법"><li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg></span><b>떠올리기</b><small>학교 밖에서 따뜻함을 받았던 순간을 떠올려요</small></li><li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/><path d="M15 5l4 4"/></svg></span><b>적어 보기</b><small>그때의 사연과 전하고 싶은 마음을 적어요</small></li><li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg></span><b>다짐하기</b><small>받은 따뜻함을 나눌 나만의 실천을 정해요</small></li><li class="optional"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3z"/><path d="M3 6l9 7 9-7"/></svg></span><b>보내기<em class="opt">선택</em></b><small>원한다면 상대방에게 마음을 전할 수 있어요</small></li></ol>
       <section class="perk" aria-label="참여 혜택">
@@ -263,6 +288,11 @@
       </section>
       <div class="note multi"><b>여러 번 참여해도 좋아요.</b><br>따뜻함을 받았던 순간이 여러 번이었다면 편하게 여러 장의 고백엽서를 써주세요!<small>단, 우수 사연 선정은 중복 참여한 사연 중 1건만 선정됩니다.</small></div>
       <div class="nav"><button class="btn" data-next>고백엽서 작성하기</button></div>
+      <div class="brand-footer" aria-label="주최 및 주관 기관">
+        <div class="brand-item"><img src="img/logo-btf.png" alt="BTF 푸른나무재단"></div>
+        <div class="brand-divider" aria-hidden="true"></div>
+        <div class="brand-item"><img src="img/logo-kwangwoon.png" alt="학교법인 광운학원"></div>
+      </div>
     </section>
 
     <section class="step" data-s="1" hidden>
@@ -299,7 +329,7 @@
           <div class="lockmsg">위의 Q2에서 마음 한마디를 먼저 골라 주세요.</div>
           <h2 tabindex="-1">그분과 함께하며 마음이 따뜻해졌던 순간을 떠올려 보세요. 어떤 일이 있었는지, 그분께 전하고 싶은 마음과 함께 자유롭게 적어주세요.<small>(장소, 시간 등 에피소드를 자유롭게 작성해주세요.)</small></h2>
           <p class="guide">어떻게 써야 할지 고민된다면 아래 단어를 눌러 이야기를 시작해보세요.<br>입력칸에 들어가며, 이를 활용하여 문장을 구성하면 좋아요.</p>
-          <div class="starters" data-for="moment" aria-label="시작 문장 도움말"><button type="button">그날은 </button><button type="button">장소는 </button><button type="button">그때 그 분이 </button><button type="button">나는 그 순간 </button><button type="button">언제나 </button><button type="button">안전을 </button><button type="button">용기를 내서 </button><button type="button">쑥스러워서 </button><button type="button">덕분에 </button><button type="button">밝은 </button></div>
+          <div class="starters" data-for="moment" aria-label="시작 문장 도움말"><button type="button">기억나시나요? </button><button type="button">항상 저에게 </button><button type="button">그날따라 유독 </button><button type="button">쑥스러워서 말 못 했지만 </button><button type="button">덕분에 제가 </button><button type="button">그때 그 따뜻한 말씀이 </button><button type="button">언제나 보이지 않는 곳에서 </button><button type="button">정말 큰 힘이 되었어요 </button><button type="button">마음속 깊이 감사하고 있어요 </button><button type="button">꼭 전하고 싶었어요 </button></div>
           <textarea id="moment" maxlength="1200" disabled aria-label="따뜻했던 사연과 전하고 싶은 이야기" placeholder="예) 비 오는 날, 아파트 앞에서 경비 아저씨가 우산을 씌워 주셨어요. 늘 인사해 주셔서 고마웠는데, 쑥스러워서 말을 못 했어요."></textarea>
           <div class="count">최소 10자 · <span data-count="moment">0</span> / 1200</div>
         </div>
@@ -314,7 +344,7 @@
       <h2 tabindex="-1">내가 받은 따뜻한 마음을 주변 사람들에게 어떻게 전할 수 있을까요?<br>앞으로 실천하고 싶은 행동이나 다짐을 적어주세요.</h2>
       <div class="note">일상에서 실천할 수 있는 나만의 구체적인 방법을 작성해주세요.<br>구체적이고 진정성이 느껴지는 사연은 우수작 선정 시 가산점이 부여됩니다.</div>
       <p class="guide">어떻게 써야 할지 고민된다면 아래 단어를 눌러 이야기를 시작해보세요.<br>입력칸에 들어가며, 이를 활용하여 문장을 구성하면 좋아요.</p>
-      <div class="starters" data-for="pledge" aria-label="말머리 단어"><button type="button">앞으로 나는 </button><button type="button">OO을/를 만나면 </button><button type="button">작은 것부터 </button></div>
+      <div class="starters" data-for="pledge" aria-label="말머리 단어"><button type="button">앞으로 저는 </button><button type="button">이웃을 만나면 먼저 </button><button type="button">마주치면 밝은 얼굴로 </button><button type="button">감사한 마음을 잊지 않고 </button><button type="button">작은 친절부터 </button><button type="button">힘들어하는 친구에게 먼저 </button><button type="button">따뜻한 인사 한마디를 </button><button type="button">도움이 필요한 분을 보면 </button><button type="button">용기 내어 다가가 </button><button type="button">소중히 이어갈게요 </button></div>
       <textarea id="pledge" maxlength="1200" aria-label="실천 방법이나 다짐" placeholder="예) 이웃을 만나면 내가 먼저 웃으며 인사할게요."></textarea>
       <div class="count">최소 10자 · <span data-count="pledge">0</span> / 1200</div>
       <div class="msg" role="alert"></div>
@@ -360,9 +390,71 @@
 
     <section class="step" data-s="6" hidden>
       <div class="qno">Q6-1</div>
-      <h2 tabindex="-1">상대방에게 전달할 수 있도록, 알고 계신 정보를 적어 주세요.<small>상대방에게 고백엽서가 잘 전달될 수 있도록 3개 이상의 정보를 기입해 주세요.</small></h2>
+      <h2 tabindex="-1">상대방에게 전달할 수 있도록, 알고 계신 정보를 적어 주세요.<small>상대방에게 고백엽서가 잘 전달될 수 있도록 다양한 정보를 기입해 주세요. (정보가 많을수록 전달될 확률이 높습니다.)</small></h2>
       <div class="note">상대방의 개인정보는 캠페인 활동이 마무리되면 바로 삭제해요.<small>정보를 입력하시면 수집·이용에 동의한 것으로 봅니다.</small></div>
-      <label class="fld">성함 또는 호칭<input type="text" id="dName" maxlength="40" autocomplete="off" placeholder="예) 김○○ 사장님, ○○아파트 경비 아저씨"></label><label class="fld">상호명·소속<input type="text" id="dOrg" maxlength="60" autocomplete="off" placeholder="예) 행복편의점, ○○아파트 관리사무소"></label><label class="fld">주소·위치<input type="text" id="dPlace" maxlength="100" autocomplete="off" placeholder="예) ○○동 ○○번지, 학교 앞 사거리 버스 정류장"></label><label class="fld">연락처<input type="text" id="dTel" maxlength="30" autocomplete="off" placeholder="예) 010-0000-0000"></label><label class="fld">이메일 주소<input type="text" id="dMail" maxlength="60" autocomplete="off" placeholder="예) name@example.com"></label><label class="fld">그 밖의 정보<input type="text" id="dEtc" maxlength="200" autocomplete="off" placeholder="예) 평일 오전에 자주 뵐 수 있어요."></label>
+      <p class="dinfo-guide">아는 항목에 체크한 뒤 세부 정보를 적어 주세요. (중복 선택 가능)</p>
+      <div class="dinfo-list">
+        <div class="dinfo-item">
+          <label class="dinfo-chk">
+            <input type="checkbox" class="dchk" data-target="dName">
+            <span class="chk-icon" aria-hidden="true"></span>
+            <span class="dinfo-title">성함 또는 호칭</span>
+          </label>
+          <div class="dinfo-body" hidden>
+            <input type="text" id="dName" maxlength="40" autocomplete="off" placeholder="예) 김○○ 사장님, ○○아파트 경비 아저씨">
+          </div>
+        </div>
+        <div class="dinfo-item">
+          <label class="dinfo-chk">
+            <input type="checkbox" class="dchk" data-target="dOrg">
+            <span class="chk-icon" aria-hidden="true"></span>
+            <span class="dinfo-title">상호명·소속</span>
+          </label>
+          <div class="dinfo-body" hidden>
+            <input type="text" id="dOrg" maxlength="60" autocomplete="off" placeholder="예) 행복편의점, ○○아파트 관리사무소">
+          </div>
+        </div>
+        <div class="dinfo-item">
+          <label class="dinfo-chk">
+            <input type="checkbox" class="dchk" data-target="dPlace">
+            <span class="chk-icon" aria-hidden="true"></span>
+            <span class="dinfo-title">주소·위치</span>
+          </label>
+          <div class="dinfo-body" hidden>
+            <input type="text" id="dPlace" maxlength="100" autocomplete="off" placeholder="예) ○○동 ○○번지, 학교 앞 사거리 버스 정류장">
+          </div>
+        </div>
+        <div class="dinfo-item">
+          <label class="dinfo-chk">
+            <input type="checkbox" class="dchk" data-target="dTel">
+            <span class="chk-icon" aria-hidden="true"></span>
+            <span class="dinfo-title">연락처</span>
+          </label>
+          <div class="dinfo-body" hidden>
+            <input type="text" id="dTel" maxlength="30" autocomplete="off" placeholder="예) 010-0000-0000">
+          </div>
+        </div>
+        <div class="dinfo-item">
+          <label class="dinfo-chk">
+            <input type="checkbox" class="dchk" data-target="dMail">
+            <span class="chk-icon" aria-hidden="true"></span>
+            <span class="dinfo-title">이메일 주소</span>
+          </label>
+          <div class="dinfo-body" hidden>
+            <input type="text" id="dMail" maxlength="60" autocomplete="off" placeholder="예) name@example.com">
+          </div>
+        </div>
+        <div class="dinfo-item">
+          <label class="dinfo-chk">
+            <input type="checkbox" class="dchk" data-target="dEtc">
+            <span class="chk-icon" aria-hidden="true"></span>
+            <span class="dinfo-title">그 밖의 정보</span>
+          </label>
+          <div class="dinfo-body" hidden>
+            <input type="text" id="dEtc" maxlength="200" autocomplete="off" placeholder="예) 평일 오전에 자주 뵐 수 있어요.">
+          </div>
+        </div>
+      </div>
       <div class="msg" role="alert"></div>
       <div class="nav"><button class="back" data-back>이전</button><button class="btn" data-next>다음</button></div>
     </section>
@@ -426,6 +518,11 @@
       <div class="big" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3z"/><path d="M3 6l9 7 9-7"/></svg></div>
       <h2 tabindex="-1">소중한 이야기를 들려주셔서 감사합니다.</h2>
       <h2>여러분의 안전하고 행복한 학교생활을 응원합니다.</h2>
+      <div class="brand-footer" aria-label="주최 및 주관 기관">
+        <div class="brand-item"><img src="img/logo-btf.png" alt="BTF 푸른나무재단"></div>
+        <div class="brand-divider" aria-hidden="true"></div>
+        <div class="brand-item"><img src="img/logo-kwangwoon.png" alt="학교법인 광운학원"></div>
+      </div>
     </section>
   </main>
 </div>
@@ -570,7 +667,18 @@ function check(n){
                 return "전화번호 자릿수를 올바르게 입력해 주세요. (예시: 010-XXXX-XXXX)";
               }
             } break;
-    case 6: if(["dName","dOrg","dPlace","dTel","dMail","dEtc"].filter(id=>text(id)).length < 3) return "상대방에게 고백엽서가 잘 전달될 수 있도록 3개 이상의 정보를 기입해 주세요 (모르시면 이전 화면에서 '아니오'를 골라 주세요)"; break;
+    case 6: {
+      const checkedBoxes = [...document.querySelectorAll(".dchk:checked")];
+      if (checkedBoxes.length === 0) {
+        return "아는 항목을 최소 1개 이상 체크하고 정보를 적어 주세요 (모르시면 이전 화면에서 '아니오'를 골라 주세요)";
+      }
+      for (const cb of checkedBoxes) {
+        if (!text(cb.dataset.target)) {
+          return "체크하신 항목의 세부 정보를 입력해 주세요.";
+        }
+      }
+      break;
+    }
   }
   return "";
 }
@@ -610,6 +718,15 @@ document.addEventListener("input", e => {
 });
 document.addEventListener("change", e => {
   wiggle(e.target);
+  if (e.target.classList.contains("dchk")) {
+    const item = e.target.closest(".dinfo-item");
+    const body = item?.querySelector(".dinfo-body");
+    const inp = document.getElementById(e.target.dataset.target);
+    if (body) {
+      body.hidden = !e.target.checked;
+      if (e.target.checked && inp) inp.focus();
+    }
+  }
   if (e.target.name === "privacyOk") { $("#pinfoWrap").style.display = e.target.value === "네" ? "block" : "none"; $("#privNo").hidden = e.target.value !== "아니오"; }
   if (e.target.name === "deliverOk") $("#deliverNo").hidden = e.target.value !== "아니오";
   if (e.target.name === "target") {
@@ -669,7 +786,11 @@ function triggerFlyMotion(cardEl, btnEl){
 async function sendAll(btn, errEl, label, card, isHeart = false){
   if (text("website")) return;                       // 스팸 방지(허니팟)
   const yes = radio("privacyOk") === "네";
-  const dv = id => radio("deliverOk") === "네" ? text(id) : "";
+  const dv = id => {
+    if (radio("deliverOk") !== "네") return "";
+    const c = document.querySelector(`.dchk[data-target="${id}"]`);
+    return (c && c.checked) ? text(id) : "";
+  };
   const data = {
     school: yes ? radio("school") : "", name: yes ? text("name") : "",
     target: targetVal(), moment: text("moment"), feeling: feelingVal(),
@@ -691,15 +812,18 @@ async function sendAll(btn, errEl, label, card, isHeart = false){
     btn.disabled = false; btn.textContent = label;
   }
 }
+let sendStartTime = 0;
 $("#sendBtn").addEventListener("click", () => {
   const b = $("#sendBtn"), msgEl = $("#sendErr"), card = $("#pc");
   if (b.disabled) return;
+  sendStartTime = Date.now();
   triggerFlyMotion(card, b);
   sendAll(b, msgEl, "엽서 보내기", card, true);
 });
 $("#mindDone").addEventListener("click", () => {
   const b = $("#mindDone"), msgEl = steps[cur].querySelector(".msg"), card = $("#mvPc");
   if (b.disabled) return;
+  sendStartTime = Date.now();
   triggerFlyMotion(card, b);
   sendAll(b, msgEl, "마음으로 전하기", card, true);
 });
@@ -712,7 +836,9 @@ function finish(card, isHeart = false){
     const d = $("#done"); d.hidden = false; d.querySelector("h2").focus({preventScroll:true});
   };
   if (isHeart) {
-    setTimeout(show, 2350);
+    const elapsed = Date.now() - sendStartTime;
+    const delay = Math.max(0, 3200 - elapsed);
+    setTimeout(show, delay);
     return;
   }
   if (!card || matchMedia("(prefers-reduced-motion: reduce)").matches) return show();
