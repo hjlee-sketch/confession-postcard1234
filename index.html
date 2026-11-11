@@ -30,7 +30,7 @@
   h1{font-size:clamp(28px,7vw,36px)}
   h2{font-size:clamp(21px,5.4vw,25px)}
   h2 small{display:block;font-family:var(--sans);font-weight:400;font-size:14.5px;color:var(--soft);margin-top:8px;line-height:1.6}
-  .hint{color:var(--soft);font-size:16px;margin:0 0 20px;text-wrap:pretty}
+  .hint{color:var(--soft);font-size:15.5px;letter-spacing:-.02em;margin:0 0 20px}
   .hero{display:block;width:min(290px,82%);margin:4px auto 18px;filter:drop-shadow(0 8px 12px rgba(120,72,30,.25))}
   .qno{display:flex;align-items:center;gap:10px;font:400 24px/1 var(--hand);color:var(--terra);margin-bottom:10px}
   .qno::after{content:"";width:46px;border-top:2px dotted #d9b98f}
@@ -167,6 +167,7 @@
   .period{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 12px;margin:0 0 18px;padding:12px 16px;background:#fff3da;border:1.5px dashed #cfa56e;border-radius:12px;text-align:center}
   .period span{font-family:var(--sans);font-weight:700;font-size:16px;color:var(--terra)}
   .period b{font-family:var(--sans);font-weight:700;font-size:16px;color:var(--brown)}
+  .period .hl{background:linear-gradient(180deg,transparent 54%,rgba(208,72,52,.3) 54% 92%,transparent 92%);color:#9e2a18;padding:0 3px 1px;border-radius:3px;box-shadow:inset 0 -2px 0 rgba(196,58,40,.45)}
   .perk{margin:0 0 16px}
   .perk h3{font-family:var(--sans);font-weight:700;font-size:18px;color:var(--brown);margin:0 0 10px}
   .perk-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -276,8 +277,8 @@
     <section class="step" data-s="0">
       <svg class="hero" viewBox="0 0 260 175" aria-hidden="true"><g transform="rotate(-7 80 80)"><rect x="26" y="14" width="92" height="106" fill="#fffdf7" stroke="#e3cfae"/><rect x="34" y="22" width="76" height="78" fill="#f6c98d"/><circle cx="86" cy="48" r="13" fill="#fff0c8"/><path d="M34 100V80q20-18 40-6t36-8v34z" fill="#c8553d" opacity=".72"/><rect x="56" y="6" width="36" height="14" fill="#e0a33a" opacity=".65" transform="rotate(-4 74 13)"/></g><g transform="rotate(6 180 80)"><rect x="132" y="22" width="92" height="106" fill="#fffdf7" stroke="#e3cfae"/><rect x="140" y="30" width="76" height="78" fill="#f3d9ae"/><circle cx="162" cy="58" r="11" fill="#c8553d" opacity=".7"/><circle cx="192" cy="58" r="11" fill="#8a9a7b" opacity=".8"/><path d="M146 100q10-26 32-26t30 26z" fill="#b9533a" opacity=".6"/><rect x="154" y="14" width="36" height="14" fill="#8a9a7b" opacity=".6" transform="rotate(5 172 21)"/></g><rect x="62" y="98" width="140" height="68" rx="3" fill="#e8c99a" stroke="#c9a574"/><path d="M62 98l70 42 70-42" fill="#f0d6ab" stroke="#c9a574"/><circle cx="132" cy="138" r="9" fill="#b9533a"/><path d="M132 143c-5-3-7-5-7-8a3.2 3.2 0 0 1 7-.6 3.2 3.2 0 0 1 7 .6c0 3-2 5-7 8z" fill="#fff3da"/></svg>
       <h1 tabindex="-1">‘위대한 고백’ 캠페인</h1>
-      <p class="hint">학교를 넘어 우리 동네, 지역 사회에 있는 다양한 사람들에게<br>평소 전하지 못했던 마음을 고백엽서에 담아 보세요.</p>
-      <div class="period" aria-label="참여 기간"><span>참여 기간</span><b>2026년 11월 16일 ~ 12월 11일</b></div>
+      <p class="hint">나에게 따뜻함을 전해준 사람, 특히 버스기사님, 소방관, 마트사장님, 이웃 주민 등<br>다양한 사람들에게 평소 전하지 못했던 고마움을 전하는 온라인 엽서에 담아보세요.</p>
+      <div class="period" aria-label="참여 기간"><span>참여 기간</span><b>2026년 11월 16일 (월) ~ <mark class="hl">12월 11일 (금)</mark></b></div>
       <ol class="flow" aria-label="참여 방법"><li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg></span><b>떠올리기</b><small>학교 밖에서 따뜻함을 받았던 순간을 떠올려요</small></li><li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/><path d="M15 5l4 4"/></svg></span><b>적어 보기</b><small>그때의 사연과 전하고 싶은 마음을 적어요</small></li><li><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg></span><b>다짐하기</b><small>받은 따뜻함을 나눌 나만의 실천을 정해요</small></li><li class="optional"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3z"/><path d="M3 6l9 7 9-7"/></svg></span><b>보내기<em class="opt">선택</em></b><small>원한다면 상대방에게 마음을 전할 수 있어요</small></li></ol>
       <section class="perk" aria-label="참여 혜택">
         <h3>참여 혜택</h3>
@@ -327,10 +328,10 @@
         <div class="qcard locked" id="q3card">
           <div class="qno">Q3</div>
           <div class="lockmsg">위의 Q2에서 마음 한마디를 먼저 골라 주세요.</div>
-          <h2 tabindex="-1">그분과 함께하며 마음이 따뜻해졌던 순간을 떠올려 보세요. 어떤 일이 있었는지, 그분께 전하고 싶은 마음과 함께 자유롭게 적어주세요.<small>(장소, 시간 등 에피소드를 자유롭게 작성해주세요.)</small></h2>
-          <p class="guide">어떻게 써야 할지 고민된다면 아래 단어를 눌러 이야기를 시작해보세요.<br>입력칸에 들어가며, 이를 활용하여 문장을 구성하면 좋아요.</p>
+          <h2 tabindex="-1">그분과 함께하며 마음이 따뜻해졌던 순간을 떠올려 보세요. 어떤 일이 있었는지, 그분께 전하고 싶은 마음과 함께 자유롭게 적어주세요.</h2>
+          <p class="guide">어떻게 써야 할지 고민된다면 아래 단어를 눌러 이야기를 시작해보세요.<br>문장을 누르면 작성란에 바로 들어갑니다. 들어간 문장을 자유롭게 수정할 수도 있어요.</p>
           <div class="starters" data-for="moment" aria-label="시작 문장 도움말"><button type="button">기억나시나요? </button><button type="button">항상 저에게 </button><button type="button">그날따라 유독 </button><button type="button">쑥스러워서 말 못 했지만 </button><button type="button">덕분에 제가 </button><button type="button">그때 그 따뜻한 말씀이 </button><button type="button">언제나 보이지 않는 곳에서 </button><button type="button">정말 큰 힘이 되었어요 </button><button type="button">마음속 깊이 감사하고 있어요 </button><button type="button">꼭 전하고 싶었어요 </button></div>
-          <textarea id="moment" maxlength="1200" disabled aria-label="따뜻했던 사연과 전하고 싶은 이야기" placeholder="예) 비 오는 날, 아파트 앞에서 경비 아저씨가 우산을 씌워 주셨어요. 늘 인사해 주셔서 고마웠는데, 쑥스러워서 말을 못 했어요."></textarea>
+          <textarea id="moment" maxlength="1200" disabled aria-label="따뜻했던 사연과 전하고 싶은 이야기" placeholder="예) 비 오는 날, 아파트 앞에서 경비 아저씨가 우산을 씌워 주셨어요. 늘 인사해 주셔서 고마웠는데, 쑥스러워서 말을 못 했어요.&#10;(장소, 시간 등 에피소드를 자유롭게 작성해주세요.)"></textarea>
           <div class="count">최소 10자 · <span data-count="moment">0</span> / 1200</div>
         </div>
       </div>
@@ -342,10 +343,10 @@
     <section class="step" data-s="3" hidden>
       <div class="qno">Q4</div>
       <h2 tabindex="-1">내가 받은 따뜻한 마음을 주변 사람들에게 어떻게 전할 수 있을까요?<br>앞으로 실천하고 싶은 행동이나 다짐을 적어주세요.</h2>
-      <div class="note">일상에서 실천할 수 있는 나만의 구체적인 방법을 작성해주세요.<br>구체적이고 진정성이 느껴지는 사연은 우수작 선정 시 가산점이 부여됩니다.</div>
-      <p class="guide">어떻게 써야 할지 고민된다면 아래 단어를 눌러 이야기를 시작해보세요.<br>입력칸에 들어가며, 이를 활용하여 문장을 구성하면 좋아요.</p>
+      <div class="note">일상에서 실천할 수 있는 나만의 구체적인 방법을 작성해주세요.<br>구체적이고 진심이 느껴지는 사연은 우수작 선정 시 가산점이 부여됩니다.</div>
+      <p class="guide">어떻게 써야 할지 고민된다면 아래 단어를 눌러 이야기를 시작해보세요.<br>문장을 누르면 작성란에 바로 들어갑니다. 들어간 문장을 자유롭게 수정할 수도 있어요.</p>
       <div class="starters" data-for="pledge" aria-label="말머리 단어"><button type="button">앞으로 저는 </button><button type="button">이웃을 만나면 먼저 </button><button type="button">마주치면 밝은 얼굴로 </button><button type="button">감사한 마음을 잊지 않고 </button><button type="button">작은 친절부터 </button><button type="button">힘들어하는 친구에게 먼저 </button><button type="button">따뜻한 인사 한마디를 </button><button type="button">도움이 필요한 분을 보면 </button><button type="button">용기 내어 다가가 </button><button type="button">소중히 이어갈게요 </button></div>
-      <textarea id="pledge" maxlength="1200" aria-label="실천 방법이나 다짐" placeholder="예) 이웃을 만나면 내가 먼저 웃으며 인사할게요."></textarea>
+      <textarea id="pledge" maxlength="1200" aria-label="실천 방법이나 다짐" placeholder="예) 이웃을 만나면 내가 먼저 웃으며 인사할게요.&#10;(실천 방법이나 다짐을 자유롭게 작성해주세요.)"></textarea>
       <div class="count">최소 10자 · <span data-count="pledge">0</span> / 1200</div>
       <div class="msg" role="alert"></div>
       <div class="nav"><button class="back" data-back>이전</button><button class="btn" data-next>다음</button></div>
@@ -354,7 +355,7 @@
     <section class="step" data-s="4" hidden>
       <div class="qno">Q5</div>
       <h2 tabindex="-1">개인정보 수집·활용에 동의하시나요?</h2>
-      <div class="note">개인정보는 상품을 받기 위해 필요해요.<br>상품 발송 후 개인정보는 안전하게 삭제됩니다.</div>
+      <div class="note">개인정보는 상품을 받기 위해 필요해요.<br>비폭력 캠페인 기간이 종료되면 개인정보는 안전하게 삭제됩니다.</div>
       <p class="pinfo-h">개인정보 수집·이용 안내</p>
       <dl class="pinfo tight"><div><dt>수집·활용 항목</dt><dd>이름, 연락처, 학교 정보, 개인 사연 내용(익명 활용)</dd></div><div><dt>이용 목적</dt><dd>간식 쿠폰 발송, 추첨 안내, 결과물 제작</dd></div><div><dt>보유 기간</dt><dd class="one">쿠폰 발송 후 삭제 · 사연은 학교별 결과물 활용 마감까지</dd></div></dl>
       <div class="chips" role="radiogroup" aria-label="개인정보 수집·활용 동의">
@@ -553,13 +554,9 @@
 </div>
 
 <button type="button" class="snd" id="snd" aria-pressed="false" hidden>음악 끄기</button>
-<script src="config.js"></script>
 <script>
 /* 구글 Apps Script 웹 앱 주소 */
-const SCRIPT_URL = (window.SCRIPT_URL || "").trim();   // 주소는 config.js 파일에서 설정합니다
-
-/* 이 접수 1건의 고유 번호 (전송이 재시도돼도 시트에는 한 번만 저장됩니다) */
-const SUBMISSION_ID = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : Date.now() + "-" + Math.random().toString(36).slice(2);
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxTqVBOFjK1Xvy8FZbWaAR-eQlu-RLgiEkpSY6CNwcB5Pb3pSE16QGq1eQhxPlxYs_k/exec";
 
 const $ = s => document.querySelector(s);
 const steps = [...document.querySelectorAll(".step[data-s]")];
@@ -787,20 +784,6 @@ function triggerFlyMotion(cardEl, btnEl){
   }
 }
 
-/* 시트에 접수 저장: 저장 확인 응답을 읽고, 읽을 수 없는 환경이면 한 번 더 보냅니다(접수 ID로 중복 방지) */
-async function postData(data){
-  const opt = {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify(data)};
-  try {
-    const r = await fetch(SCRIPT_URL, opt);
-    const j = await r.json();
-    if (j && j.ok) return;
-    throw new Error((j && j.error) || "server");
-  } catch (e) {
-    if (e && e.name === "TypeError") { await fetch(SCRIPT_URL, {...opt, mode:"no-cors"}); return; }
-    throw e;
-  }
-}
-
 async function sendAll(btn, errEl, label, card, isHeart = false){
   if (text("website")) return;                       // 스팸 방지(허니팟)
   const yes = radio("privacyOk") === "네";
@@ -813,14 +796,14 @@ async function sendAll(btn, errEl, label, card, isHeart = false){
     school: yes ? radio("school") : "", name: yes ? text("name") : "",
     target: targetVal(), moment: text("moment"), feeling: feelingVal(),
     untold: "", pledge: text("pledge"),
-    useOk: radio("privacyOk"), deliverOk: radio("deliverOk"), deliverName: dv("dName"), deliverOrg: dv("dOrg"), deliverPlace: dv("dPlace"), deliverTel: dv("dTel"), deliverMail: dv("dMail"), deliverEtc: dv("dEtc"), privacyOk: radio("privacyOk"), contact: yes ? text("contact") : "",
-    submissionId: SUBMISSION_ID, route: label === "마음으로 전하기" ? "마음 전하기" : "엽서 전달"
+    useOk: radio("privacyOk"), deliverOk: radio("deliverOk"), deliverName: dv("dName"), deliverOrg: dv("dOrg"), deliverPlace: dv("dPlace"), deliverTel: dv("dTel"), deliverMail: dv("dMail"), deliverEtc: dv("dEtc"), privacyOk: radio("privacyOk"), contact: yes ? text("contact") : ""
   };
   btn.disabled = true; btn.textContent = isHeart ? (label === "마음으로 전하기" ? "마음 전하는 중…" : "엽서 보내는 중…") : "보내는 중…"; errEl.textContent = "";
   try {
-    if (/^https:\/\/script\.google\.com\//.test(SCRIPT_URL)) {
-      await postData(data);
-    } else { throw new Error("접수 주소(config.js)가 설정되지 않았어요"); }   // 주소가 없으면 '성공'처럼 보이지 않도록 오류 처리
+    if (SCRIPT_URL) {
+      await fetch(SCRIPT_URL, {method:"POST", mode:"no-cors",
+        headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify(data)});
+    } else { console.log("테스트 모드:", data); }
     finish(card, isHeart);
   } catch (err) {
     const o = $("#heartFlyOverlay"); if (o) o.hidden = true;
